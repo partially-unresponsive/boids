@@ -21,15 +21,13 @@ int main ()
 	// game loop
 	while (!WindowShouldClose())		// run the loop until the user presses ESCAPE or presses the Close button on the window
 	{
-		// drawing
 		BeginDrawing();
 
 		// Setup the back buffer for drawing (clear color and depth buffers)
-		ClearBackground(BLACK);
+		ClearBackground(WHITE);
+		DrawFPS(0, 0);
 
-		// draw some text using the default font
-
-		// BEGIN GAY
+		// BEGIN GAY FLAG
 		/*
 		DrawText("Hello Gaylib", SCREEN_WIDTH/2 - 60,MARGIN/2,20,WHITE);
 		int idx = 0;
@@ -67,42 +65,39 @@ int main ()
 				DrawTexture(wabbit, x, y, col);
 			}
 		}
-		*/ // END GAY FLAG
+		*/ 
+		// END GAY FLAG
 
-		// START TRANS FLAG
-		DrawText("Hello Translib", SCREEN_WIDTH/2 - 60,MARGIN/2,20,WHITE);
-		int idx = 0;
-		Color col;
-		for (int i = 0; i < (int)((SCREEN_WIDTH - 2*MARGIN)/20); i++){
-			for (int j = 0; j < 18; j++){
-				idx = i % 8;
-				switch(idx){
-					case 0:
-					case 1:
-						col = BLUE;
-						break;
-					case 2:
-					case 3:
-						col = PINK;
-						break;
-					case 4:
-					case 5:
-						col = WHITE;
-						break;
-					case 6:
-					case 7:
-						col = PINK;
-						break;
-				}
-				DrawTexture(wabbit, 20*i + MARGIN, 30*j + MARGIN, col);
-			}
-		}
-
+		// BEGIN TRANS FLAG
+		// DrawText("Hello Translib", SCREEN_WIDTH/2 - 60,MARGIN/2,20,WHITE);
+		// int idx = 0;
+		// Color col;
+		// for (int i = 0; i < (int)((SCREEN_WIDTH - 2*MARGIN)/20); i++){
+		// 	for (int j = 0; j < 18; j++){
+		// 		idx = i % 8;
+		// 		switch(idx){
+		// 			case 0:
+		// 			case 1:
+		// 				col = BLUE;
+		// 				break;
+		// 			case 2:
+		// 			case 3:
+		// 				col = PINK;
+		// 				break;
+		// 			case 4:
+		// 			case 5:
+		// 				col = WHITE;
+		// 				break;
+		// 			case 6:
+		// 			case 7:
+		// 				col = PINK;
+		// 				break;
+		// 		}
+		// 		DrawTexture(wabbit, 20*i + MARGIN, 30*j + MARGIN, col);
+		// 	}
+		// }
 		// END TRANS FLAG
 
-		// DrawTexture(wabbit, 400, 200, ORANGE);
-		// DrawTexture(wabbit, 360, 200, ORANGE);
-		
 		// end the frame and get ready for the next one  (display frame, poll input, etc...)
 		EndDrawing();
 	}
