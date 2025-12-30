@@ -7,15 +7,15 @@ RealVector::RealVector(float x_, float y_) {
     y = y_;
 }
 
-RealVector RealVector::add(RealVector &vec){
+RealVector RealVector::add(const RealVector &vec){
     return RealVector(x+vec.x, y+vec.y);
 }
 
-RealVector RealVector::sub(RealVector &vec){
+RealVector RealVector::sub(const RealVector &vec){
     return RealVector(x-vec.x, y-vec.y);
 }
 
-RealVector RealVector::mult(float num){
+RealVector RealVector::mult(const float num){
     return RealVector(x*num, y*num);
 }
 

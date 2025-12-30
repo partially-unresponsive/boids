@@ -7,8 +7,8 @@ class RealVector {
         RealVector();
         RealVector(float x, float y);
         
-        RealVector add(RealVector &vec);
-        RealVector sub(RealVector &vec);
+        RealVector add(const RealVector &vec);
+        RealVector sub(const RealVector &vec);
         RealVector mult(float num);
         RealVector limit(float min_speed, float max_speed);
 

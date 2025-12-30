@@ -1,6 +1,8 @@
 #include "Boid.hpp"
 #include "RealVector.hpp"
 #include "raylib.h"
+#include <vector>
+using std::vector;
 
 Boid::Boid(){}
 Boid::Boid(float x, float y, float vx, float vy, float _danger_zone, float _sight_zone, float _size){
@@ -53,4 +55,42 @@ void bound_boid(Boid &boid, double turn_factor, float turn_padding, int sw, int 
     else if (boid.position.x > sw - turn_padding) boid.velocity.x -= turn_factor;
     if (boid.position.y < turn_padding) boid.velocity.y += turn_factor;
     else if (boid.position.y > sh - turn_padding) boid.velocity.y -= turn_factor;
+}
+
+void alter_boid_path(vector<Boid> &boids, int boid_idx, double avoidance_factor, double matching_factor, double centering_factor){
+    int neighbors = 0;
+    RealVector vel_avg(0, 0);
+    RealVector pos_avg(0, 0);
+    RealVector close_d(0, 0);
+
+    for (int i = 0; i < boids.size(); i++){
+        if (boid_idx == i) continue;
+
+        RealVector diff = boids[boid_idx].position.sub(boids[i].position);
+
+        float dis = diff.getMag();
+        if (dis < boids[boid_idx].danger_zone){
+            if (dis == 0) boids[boid_idx].move_boid();
+            close_d = close_d.add(diff);
+        } else if (dis < boids[boid_idx].sight_zone){
+            vel_avg = vel_avg.add(boids[i].velocity);
+            pos_avg = pos_avg.add(boids[i].position);
+            neighbors++;
+        }
+    }
+    if (neighbors > 0){
+        vel_avg = vel_avg.mult(1.0f/neighbors);
+        pos_avg = pos_avg.mult(1.0f/neighbors);
+
+        // Alignment
+        RealVector change_vel = vel_avg.sub(boids[boid_idx].velocity).mult(matching_factor);
+        boids[boid_idx].velocity = boids[boid_idx].velocity.add(change_vel);
+
+        // Cohesion
+        RealVector change_pos = pos_avg.sub(boids[boid_idx].position).mult(centering_factor);
+        boids[boid_idx].velocity = boids[boid_idx].velocity.add(change_pos);
+    }
+
+    // Separation
+    boids[boid_idx].velocity = boids[boid_idx].velocity.add(close_d.mult(avoidance_factor));
 }
