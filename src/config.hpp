@@ -1,0 +1,5 @@
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 800
+#define TARGET_FPS 120
+
+#define MARGIN 100
