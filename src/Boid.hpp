@@ -1,5 +1,6 @@
 #pragma once
 #include "RealVector.hpp"
+#include "raylib.h"
 #include <vector>
 using std::vector;
 
@@ -7,6 +8,7 @@ class Boid {
     public:
         RealVector position, velocity;
         float danger_zone, sight_zone, size;
+        Color color;
         
         Boid();
         Boid(float x, float y, float vx, float vy, float _danger_zone, float _sight_zone, float _size);

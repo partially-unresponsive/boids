@@ -13,6 +13,7 @@ Boid::Boid(float x, float y, float vx, float vy, float _danger_zone, float _sigh
     this->danger_zone = _danger_zone;
     this->sight_zone = _sight_zone;
     this->size = _size;
+    this->color = PINK;
 }
 
 void Boid::move_boid(){
@@ -39,7 +40,7 @@ void Boid::show_boid(){
     u = RealVector(-u.x, -u.y); // 180 degree rotation
     tri[2] = (Vector2){position.x + u.x + move_to_middle.x, position.y + u.y + move_to_middle.y};
     
-    DrawTriangleLines(tri[0], tri[1], tri[2], PINK);
+    DrawTriangleLines(tri[0], tri[1], tri[2], color);
 }
 
 void limit_speed(Boid &boid, float min_speed, float max_speed){
@@ -51,10 +52,20 @@ void limit_speed(Boid &boid, float min_speed, float max_speed){
 }
 
 void bound_boid(Boid &boid, double turn_factor, float turn_padding, int sw, int sh){
-    if (boid.position.x < turn_padding) boid.velocity.x += turn_factor;
-    else if (boid.position.x > sw - turn_padding) boid.velocity.x -= turn_factor;
-    if (boid.position.y < turn_padding) boid.velocity.y += turn_factor;
-    else if (boid.position.y > sh - turn_padding) boid.velocity.y -= turn_factor;
+    if (boid.position.x < turn_padding) {
+        boid.velocity.x += turn_factor;
+        boid.color = PURPLE;
+    } else if (boid.position.x > sw - turn_padding) {
+        boid.velocity.x -= turn_factor;
+        boid.color = PURPLE;
+    }
+    if (boid.position.y < turn_padding) {
+        boid.velocity.y += turn_factor;
+        boid.color = PURPLE;
+    } else if (boid.position.y > sh - turn_padding) {
+        boid.velocity.y -= turn_factor;
+        boid.color = PURPLE;
+    }
 }
 
 void alter_boid_path(vector<Boid> &boids, int boid_idx, double avoidance_factor, double matching_factor, double centering_factor){

@@ -20,8 +20,8 @@ int main ()
 	SetTargetFPS(TARGET_FPS); // Program does not want to actually go for 120FPS if FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI flags are set, caps at 60 instead
 
 	// TODO: Adjut factors here!
-	double turn_factor = 0.2, avoidance_factor = 0.1, matching_factor = 0.05, centering_factor = 0.0005;
-	float turn_padding = 100, min_speed = 6, max_speed = 12;
+	double turn_factor = 0.8, avoidance_factor = 0.1, matching_factor = 0.05, centering_factor = 0.0005;
+	float turn_padding = 120, min_speed = 6, max_speed = 12;
 	float danger_zone = 15, sight_zone = 40, size = 10;
 
 	srand(time(NULL));
@@ -57,7 +57,12 @@ int main ()
 			alter_boid_path(boids, i, avoidance_factor, matching_factor, centering_factor);
 
 			RealVector diff = boids[i].position.sub(player);
-			if (diff.getMag() < boids[i].sight_zone + player_radius) boids[i].velocity = boids[i].velocity.add(diff);
+			if (diff.getMag() < boids[i].sight_zone + player_radius) {
+				boids[i].velocity = boids[i].velocity.add(diff);
+				boids[i].color = WHITE;
+			} else {
+				boids[i].color = PINK;
+			}
 
 			limit_speed(boids[i], min_speed, max_speed);
 			bound_boid(boids[i], turn_factor, turn_padding, SCREEN_WIDTH, SCREEN_HEIGHT);
