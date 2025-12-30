@@ -17,6 +17,56 @@
       "-std=c++17",
       "-c",
       "-o",
+      "obj/x64/Debug/boids/Boid.o",
+      "../../src/Boid.hpp"
+    ],
+    "directory": "/home/CutieSai/github/boids/build/build_files",
+    "file": "/home/CutieSai/github/boids/src/Boid.hpp",
+    "output": "/home/CutieSai/github/boids/build/build_files/obj/x64/Debug/boids/Boid.o"
+  },
+  {
+    "arguments": [
+      "g++",
+      "-MD",
+      "-MP",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-I../../src",
+      "-I../../include",
+      "-I../external/raylib-master/src",
+      "-m64",
+      "-Wshadow",
+      "-g",
+      "-std=c++17",
+      "-c",
+      "-o",
+      "obj/x64/Debug/boids/RealVector.o",
+      "../../src/RealVector.hpp"
+    ],
+    "directory": "/home/CutieSai/github/boids/build/build_files",
+    "file": "/home/CutieSai/github/boids/src/RealVector.hpp",
+    "output": "/home/CutieSai/github/boids/build/build_files/obj/x64/Debug/boids/RealVector.o"
+  },
+  {
+    "arguments": [
+      "g++",
+      "-MD",
+      "-MP",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-I../../src",
+      "-I../../include",
+      "-I../external/raylib-master/src",
+      "-m64",
+      "-Wshadow",
+      "-g",
+      "-std=c++17",
+      "-c",
+      "-o",
       "obj/x64/Debug/boids/config.o",
       "../../src/config.hpp"
     ],
@@ -48,6 +98,56 @@
     "directory": "/home/CutieSai/github/boids/build/build_files",
     "file": "/home/CutieSai/github/boids/include/resource_dir.h",
     "output": "/home/CutieSai/github/boids/build/build_files/obj/x64/Debug/boids/resource_dir.o"
+  },
+  {
+    "arguments": [
+      "g++",
+      "-MD",
+      "-MP",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-I../../src",
+      "-I../../include",
+      "-I../external/raylib-master/src",
+      "-m64",
+      "-Wshadow",
+      "-g",
+      "-std=c++17",
+      "-c",
+      "-o",
+      "obj/x64/Debug/boids/Boid.o",
+      "../../src/Boid.cpp"
+    ],
+    "directory": "/home/CutieSai/github/boids/build/build_files",
+    "file": "/home/CutieSai/github/boids/src/Boid.cpp",
+    "output": "/home/CutieSai/github/boids/build/build_files/obj/x64/Debug/boids/Boid.o"
+  },
+  {
+    "arguments": [
+      "g++",
+      "-MD",
+      "-MP",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-I../../src",
+      "-I../../include",
+      "-I../external/raylib-master/src",
+      "-m64",
+      "-Wshadow",
+      "-g",
+      "-std=c++17",
+      "-c",
+      "-o",
+      "obj/x64/Debug/boids/RealVector.o",
+      "../../src/RealVector.cpp"
+    ],
+    "directory": "/home/CutieSai/github/boids/build/build_files",
+    "file": "/home/CutieSai/github/boids/src/RealVector.cpp",
+    "output": "/home/CutieSai/github/boids/build/build_files/obj/x64/Debug/boids/RealVector.o"
   },
   {
     "arguments": [
